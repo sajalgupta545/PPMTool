@@ -2,8 +2,8 @@ package com.example.mytaskguru.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.*;
 @Entity
 public class ProjectTask {
