@@ -1,4 +1,5 @@
 pipeline {
+
     environment {
 			DOCKERHUB_REGISTRY = "prateek1o1/MyTaskGuru-Fullstack"
 			DOCKERHUB_CREDENTIALS = credentials('docker-jenkins')
