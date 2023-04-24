@@ -16,4 +16,13 @@ pipeline {
 				}
 			}
     }
+	stage ('Running React Tests (Jest)') {
+				steps {
+					sh '''
+							cd mytaskguru
+							npm ci
+							npm run test
+					'''
+				}
+			}
 }
