@@ -15,7 +15,6 @@ pipeline {
 					branch: 'master'
 				}
 			}
-    }
 	stage ('Running React Tests (Jest)') {
 				steps {
 					sh '''
@@ -25,4 +24,6 @@ pipeline {
 					'''
 				}
 			}
+    }
+	
 }
