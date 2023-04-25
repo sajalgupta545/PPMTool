@@ -1,11 +1,6 @@
 pipeline {
 
-	environment {
-		DOCKERHUB_CREDENTIALS = credentials('docker-jenkins')
-    }
-
 	agent any
-
 	stages {
 
 		stage('Git Pull') {
@@ -50,7 +45,7 @@ pipeline {
 			stage('Pushing MyTaskGuru Frontend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""
+						withDockerRegistry([credentialsId: docker-jenkins, url: ""
                     ]) {
 							sh 'docker push prateek1o1/mytaskguru-frontend:latest'
                     }
@@ -61,7 +56,7 @@ pipeline {
 			stage('Pushing MyTaskGuru Backend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""
+						withDockerRegistry([credentialsId: docker-jenkins, url: ""
                     ]) {
 							sh 'docker push prateek1o1/mytaskguru-backend:latest'
                     }
