@@ -15,10 +15,10 @@ pipeline {
 					branch: 'master'
 				}
 			}
-			stage("") {
+			stage("Install a project with a clean slate") {
         	    steps{
             	    dir('mytaskguru'){
-                	    sh 'npm install'
+                	    sh 'npm ci'
                 	}
             	}
         	}
