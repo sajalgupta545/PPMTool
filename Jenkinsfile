@@ -45,7 +45,7 @@ pipeline {
 			stage('Pushing MyTaskGuru Frontend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: docker-jenkins, url: ""
+						withDockerRegistry([credentialsId: "docker-jenkins", url: ""
                     ]) {
 							sh 'docker push prateek1o1/mytaskguru-frontend:latest'
                     }
@@ -56,7 +56,7 @@ pipeline {
 			stage('Pushing MyTaskGuru Backend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: docker-jenkins, url: ""
+						withDockerRegistry([credentialsId: "docker-jenkins", url: ""
                     ]) {
 							sh 'docker push prateek1o1/mytaskguru-backend:latest'
                     }
