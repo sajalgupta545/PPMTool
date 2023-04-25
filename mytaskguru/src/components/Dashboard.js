@@ -4,6 +4,7 @@ import CreateProjectButton from "./Project/CreateProjectButton";
 import { connect } from "react-redux";
 import { getProjects } from "../actions/projectActions";
 import PropTypes from "prop-types";
+import DateTime from "./DateTime";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -21,8 +22,8 @@ class Dashboard extends Component {
               <h1 className="display-4 text-center">Create Task</h1>
               <br />
               <CreateProjectButton />
-
               <br />
+              <DateTime/>
               <hr />
               {projects.map(project => (
                 <ProjectItem key={project.id} project={project} />
