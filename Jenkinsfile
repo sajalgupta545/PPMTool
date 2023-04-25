@@ -20,7 +20,7 @@ pipeline {
             	    dir('mytaskguru'){
                 	    sh 'npm install'
                 	}
-            	}
+            		}
         	}
 
 			stage('Maven Build'){
@@ -31,7 +31,7 @@ pipeline {
 
             		}
            		}
-			}
+		}
 		
     }	
 	
