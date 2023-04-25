@@ -19,7 +19,7 @@ services:
     ports:
       - 3002:3002
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/ppm?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/project?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     depends_on:
       mysql:
         condition: service_healthy
