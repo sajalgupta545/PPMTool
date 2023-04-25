@@ -9,16 +9,20 @@ services:
     command: npm start
     networks:
       - mytaskguru-network
+    depends_on:
+      - mytaskguru-backend
+    volumes:
+      - mysql_data_volume:/var/lib/mysql
   mytaskguru-backend:
     image: prateek1o1/mytaskguru-backend:latest
     container_name: mytaskguru-backend
     ports:
       - 3002:3002
     environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/ppm?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - mytaskguru-network
   mysql:
@@ -30,9 +34,10 @@ services:
       - MYSQL_USER=prateek
       - MYSQL_PASSWORD=Prateek@123
     ports:
-      - "3307:3306"
+      - 3307:3306
     networks:
       - mytaskguru-network
 networks:
-  mytaskguru-network:
-    driver: bridge
+  mytaskguru-network: null
+volumes:
+  mysql_data_volume: null
