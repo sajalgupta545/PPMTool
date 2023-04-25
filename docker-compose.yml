@@ -26,7 +26,7 @@ services:
 
   spring:
     image: prateek1o1/mytaskguru-backend
-    container_name: mytaskguru-frontend
+    container_name: mytaskguru-backend
     ports:
       - "3002:3002"
     networks:
