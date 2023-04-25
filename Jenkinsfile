@@ -1,10 +1,11 @@
 pipeline {
 	agent any
+	
 	stages {
 
 		stage('Git Pull') {
 			steps {
-				git url: 'https: //github.com/prateek1o1/MyTaskGuru-Fullstack.git',
+				git url: 'https://github.com/prateek1o1/MyTaskGuru-Fullstack.git',
 					branch: 'master'
             }
         }
