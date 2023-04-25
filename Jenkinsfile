@@ -35,7 +35,7 @@ pipeline {
 		stage('Build MyTaskGuru Frontend Docker Image') {
 			steps {
 				dir('mytaskguru') {
-					sh 'docker build -t prateek1o1/MyTaskGuru-frontend:latest .'
+					sh 'docker build -t prateek1o1/mytaskguru-frontend:latest .'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
 		stage('Building MyTaskGuru Backend Image') {
 			steps {
 				dir('MyTaskGuru') {
-					sh 'docker build -t prateek1o1/MyTaskGuru-backend:latest .'
+					sh 'docker build -t prateek1o1/mytaskguru-backend:latest .'
                 }
             }
         }		
@@ -52,7 +52,7 @@ pipeline {
 					script {
 						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""
                     ]) {
-							sh 'docker push prateek1o1/MyTaskGuru-frontend:latest'
+							sh 'docker push prateek1o1/mytaskguru-frontend:latest'
                     }
                 }
             }
@@ -63,7 +63,7 @@ pipeline {
 					script {
 						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""
                     ]) {
-							sh 'docker push prateek1o1/MyTaskGuru-backend:latest'
+							sh 'docker push prateek1o1/mytaskguru-backend:latest'
                     }
                 }
             }
