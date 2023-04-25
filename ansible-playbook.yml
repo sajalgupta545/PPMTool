@@ -1,20 +1,25 @@
 ---
-- name: Deploying the application
+- name: Pull docker image
   hosts: all
   tasks:
-    - name: Starting the docker service
-      service:
-        name: docker
-        state: started
-
-    - name: Copying the docker compose file
+    - name: copy docker compose file
       copy:
         src: ./docker-compose.yml
         dest: ./
 
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
 
-#    - name: cleaning the docker compose workspace in the local system
-#      shell: docker-compose down
+    - name: docker compose pull
+      command: docker-compose pull
 
-    - name: Starting the application
+    - name: stop previous back-end container
+      shell: docker rm -f kunalg3s/majorproject:server
+
+    - name: stop previous front-end container
+      shell: docker rm -f kunalg3s/majorproject:client
+
+    - name: running docker compose file
       shell: docker-compose up -d
