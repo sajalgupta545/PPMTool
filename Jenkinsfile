@@ -69,5 +69,10 @@ pipeline {
 					sh "docker rmi prateek1o1/mytaskguru-backend:latest"
             }
         }
+		stage('Ansible Deploy') {
+             steps {
+                  ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'ansible-playbook.yml'
+             }
+        }
     }
 }
