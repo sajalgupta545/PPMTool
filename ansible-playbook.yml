@@ -1,15 +1,12 @@
 ---
 - name: Deploy Docker Images
   hosts: all
-
   tasks:
     - name: Copy Docker Compose file from host machine to remote host
       copy:
         src: ./docker-compose.yml
         dest: ./
-
     - name: Pull the Docker images specifed in docker-compose
       command: docker-compose pull
-
     - name: Running Docker Compose File
-      command: docker-compose -f docker-compose.yml up -d
+      command: docker-compose up -d

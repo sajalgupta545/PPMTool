@@ -1,27 +1,23 @@
+---
 version: "3.5"
-
 services:
   mytaskguru-frontend:
     image: prateek1o1/mytaskguru-frontend:latest
     container_name: mytaskguru-frontend
     ports:
-      - "3000:3000"
+      - 3000:3000
     command: npm start
-
   mytaskguru-backend:
     image: prateek1o1/mytaskguru-backend:latest
     container_name: mytaskguru-backend
     ports:
-      - "3002:3002"
+      - 3002:3002
     restart: on-failure
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
     depends_on:
       - mysql
-    links:
-      - mysql:mysql
-
   mysql:
     image: mysql:latest
     container_name: mysql
@@ -30,5 +26,3 @@ services:
       - MYSQL_DATABASE=project
       - MYSQL_USER=prateek
       - MYSQL_PASSWORD=Prateek@123
-    ports:
-      - "3307:3306"
