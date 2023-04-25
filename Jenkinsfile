@@ -15,15 +15,24 @@ pipeline {
 					branch: 'master'
 				}
 			}
-	stage ('Running React Tests (Jest)') {
-				steps {
-					sh '''
-							cd mytaskguru
-							npm ci
-							npm run test
-					'''
-				}
+			stage("") {
+        	    steps{
+            	    dir('mytaskguru'){
+                	    sh 'npm install'
+                	}
+            	}
+        	}
+
+			stage('Maven Build'){
+            	steps {
+                	dir('MyTaskGuru'){
+
+                    	sh 'mvn clean install'
+
+            		}
+           		}
 			}
-    }
+		
+    }	
 	
 }
