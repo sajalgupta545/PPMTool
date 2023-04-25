@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 COPY ./target/MyTaskGuru-0.0.1-SNAPSHOT.jar ./
 WORKDIR /
 EXPOSE 3002
