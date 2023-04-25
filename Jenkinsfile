@@ -18,7 +18,7 @@ pipeline {
 			stage("Install a project with a clean slate") {
         	    steps{
             	    dir('mytaskguru'){
-                	    sh 'npm ci'
+                	    sh 'npm install'
                 	}
             	}
         	}
