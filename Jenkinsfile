@@ -1,7 +1,6 @@
 pipeline {
 
 	environment {
-		DOCKERHUB_REGISTRY = "prateek1o1/MyTaskGuru-Fullstack"
 		DOCKERHUB_CREDENTIALS = credentials('docker-jenkins')
 	}
 
@@ -54,8 +53,8 @@ pipeline {
 			stage('Pushing MyTaskGuru Frontend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: registryCredential, url: ""]) {
-							sh 'docker push prateek1o1/MyTaskGuru-backend:latest'
+						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""]) {
+							sh 'docker push prateek1o1/MyTaskGuru-frontend:latest'
 						}
 					}
 				}
@@ -64,7 +63,7 @@ pipeline {
 			stage('Pushing MyTaskGuru Backend Image to DockerHub') {
 				steps {
 					script {
-						withDockerRegistry([credentialsId: registryCredential, url: ""]) {
+						withDockerRegistry([credentialsId: DOCKERHUB_CREDENTIALS, url: ""]) {
 							sh 'docker push prateek1o1/MyTaskGuru-backend:latest'
 						}
 					}
