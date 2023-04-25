@@ -16,10 +16,10 @@
       command: docker-compose pull
 
     - name: stop previous back-end container
-      shell: docker rm -f kunalg3s/majorproject:server
+      shell: docker rm -f prateek1o1/mytaskguru-backend:latest
 
     - name: stop previous front-end container
-      shell: docker rm -f kunalg3s/majorproject:client
+      shell: docker rm -f prateek1o1/mytaskguru-frontend:latest
 
     - name: running docker compose file
       shell: docker-compose up -d
