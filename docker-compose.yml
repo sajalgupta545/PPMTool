@@ -7,6 +7,8 @@ services:
     ports:
       - 3000:3000
     command: npm start
+    networks:
+      - mytaskguru-network
   mytaskguru-backend:
     image: prateek1o1/mytaskguru-backend:latest
     container_name: mytaskguru-backend
@@ -17,6 +19,8 @@ services:
       - MYSQL_PORT=3306
     depends_on:
       - mysql
+    networks:
+      - mytaskguru-network
   mysql:
     image: mysql:latest
     container_name: mysql
@@ -25,3 +29,10 @@ services:
       - MYSQL_DATABASE=project
       - MYSQL_USER=prateek
       - MYSQL_PASSWORD=Prateek@123
+    ports:
+      - "3307:3306"
+    networks:
+      - mytaskguru-network
+networks:
+  mytaskguru-network:
+    driver: bridge
