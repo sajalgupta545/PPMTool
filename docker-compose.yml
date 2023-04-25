@@ -1,5 +1,5 @@
 ---
-version: "3.5"
+version: "2.4"
 services:
   mytaskguru-frontend:
     image: prateek1o1/mytaskguru-frontend:latest
@@ -12,7 +12,6 @@ services:
     container_name: mytaskguru-backend
     ports:
       - 3002:3002
-    restart: on-failure
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
