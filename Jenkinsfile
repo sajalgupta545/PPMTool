@@ -63,5 +63,12 @@ pipeline {
                 }
             }
         }
+
+			stage('Removing Docker Images from Local') {
+				steps {
+					sh "docker rmi prateek1o1/mytaskguru-frontend:latest"
+					sh "docker rmi prateek1o1/mytaskguru-backend:latest"
+				}
+			}
     }
 }
