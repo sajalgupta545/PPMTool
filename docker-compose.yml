@@ -2,6 +2,7 @@ version: "2.4"
 services:
   react-app:
     image: prateek1o1/mytaskguru-frontend:latest
+    container_name: client
     stdin_open: true
     ports: 
       - "3000:3000"
@@ -9,6 +10,7 @@ services:
       - mytaskguru-app
   api-server:
     image: prateek1o1/mytaskguru-backend:latest
+    container_name: server
     ports:
       - "3002:3002"
     networks:
