@@ -1,4 +1,4 @@
-version: "3"
+version: "2.4"
 services:
   react-app:
     image: prateek1o1/mytaskguru-frontend:latest
@@ -17,22 +17,20 @@ services:
       - mysqldb
     environment:
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/task?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
-      - spring.datasource.username=prateek
-      - spring.datasource.password=Prateek@123
+      - spring.datasource.username=root
+      - spring.datasource.password=yourpassword
   mysqldb:
     image: mysql/mysql-server
     environment:
-      - MYSQL_USERNAME=prateek
-      - MYSQL_PASSWORD=Prateek@123
+      - MYSQL_ROOT_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=yourpassword
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - mytaskguru-app
     volumes:
       - mysql-data:/var/lib/mysql
 networks:
   mytaskguru-app:
-    driver: bridge
 volumes:
   mysql-data:
-    driver: local
