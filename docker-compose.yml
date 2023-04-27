@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysqldb
     environment:
-      - spring.datasource.url = jdbc:mysql://mysqldb:3306/task?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/task?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
       - spring.datasource.username=prateek
       - spring.datasource.password=Prateek@123
   mysqldb:
