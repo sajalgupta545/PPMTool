@@ -22,10 +22,9 @@ services:
     ports:
       - "3000:3000"
     networks:
-      springboot-mysql-net: 
-        ipv4_address: 172.30.0.4
+      springboot-mysql-net
     depends_on:
-      - spring
+      - springboot-restful-webservices
   springboot-restful-webservices:
     image: prateek1o1/mytaskguru-backend:latest
     container_name: springboot-restful-webservices
