@@ -1,47 +1,46 @@
-version: "2.4"
+version: "3.8"
 services:
 
-  mysql:
-    image: mysql/mysql-server
+  mysqldb:
+    image: mysql
     container_name: mysqldb
-    networks:
-      - ppmtool
+    networks: 
+      springboot-mysql-net: 
     environment:
       - MYSQL_ROOT_PASSWORD=yourpassword
       - MYSQL_DATABASE=task
-      - MYSQL_USER=prateek
-      - MYSQL_PASSWORD=Prateek@123
     volumes:
       - mysql_data_volume:/var/lib/mysql
-    ports:
-      - "9001:3306"
-  react:
-    image: prateek1o1/mytaskguru-frontend:latest
-    container_name: client
-    ports:
-      - "3000:3000"
-    networks:
-      - ppmtool
-    depends_on:
-      - spring
-    command: npm start
-  spring:
+  # react:
+  #   image: prateek1o1/mytaskguru-frontend:latest
+  #   container_name: client
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     springboot-mysql-net: 
+  #       ipv4_address: 172.30.0.4
+  #   depends_on:
+  #     - spring
+  springboot-restful-webservices:
     image: prateek1o1/mytaskguru-backend:latest
-    container_name: server
+    container_name: springboot-restful-webservices
+    build: 
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - "3002:3002"
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:mysql://mysqldb:3306/task?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
-    networks:
-      - ppmtool
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/database?autoReconnect=true&useSSL=false
     depends_on:
-      mysql:
-        condition: service_healthy
-    command: java -jar MyTaskGuru-0.0.1-SNAPSHOT.jar
+      - mysqldb
+    networks:
+      - springboot-mysql-net
+    restart: on-failure
+  
 
 
 networks:
-  ppmtool:
+  springboot-mysql-net:
 
 volumes:
   mysql_data_volume:
