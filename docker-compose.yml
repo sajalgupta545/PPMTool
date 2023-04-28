@@ -8,7 +8,7 @@ services:
       - "3307:3306"
     restart: always
     networks: 
-      springboot-mysql-net: 
+      - springboot-mysql-net 
     environment:
       - MYSQL_ROOT_PASSWORD=yourpassword
       - MYSQL_DATABASE=task
@@ -22,7 +22,7 @@ services:
     ports:
       - "3000:3000"
     networks:
-      springboot-mysql-net
+      - springboot-mysql-net
     depends_on:
       - springboot-restful-webservices
   springboot-restful-webservices:
