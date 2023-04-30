@@ -64,6 +64,7 @@ public class JwtTokenProvider {
     }
 
     // get userid from the token
+    // extract the information from token
 
     public Long getUserIdFromJWT(String token){
         Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
