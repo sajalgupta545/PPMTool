@@ -1,5 +1,4 @@
 package com.example.mytaskguru.services;
-
 import com.example.mytaskguru.domain.User;
 import com.example.mytaskguru.exceptions.UsernameAlreadyExistsException;
 import com.example.mytaskguru.repositories.UserRepository;
