@@ -5,7 +5,7 @@ pipeline {
 
 		stage('Git Pull') {
 			steps {
-				git url: 'https://github.com/prateek1o1/MyTaskGuru-Fullstack.git',
+				git url: 'https://github.com/sajalgupta545/PPMTool.git',
 					branch: 'master'
             }
         }
@@ -30,7 +30,7 @@ pipeline {
 		stage('Build MyTaskGuru Frontend Docker Image') {
 			steps {
 				dir('mytaskguru') {
-					sh 'docker build -t prateek1o1/mytaskguru-frontend:latest .'
+					sh 'docker build -t sajalgupta545/mytaskguru-frontend:latest .'
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
 		stage('Building MyTaskGuru Backend Image') {
 			steps {
 				dir('MyTaskGuru') {
-					sh 'docker build -t prateek1o1/mytaskguru-backend:latest .'
+					sh 'docker build -t sajalgupta545/mytaskguru-backend:latest .'
                 }
             }
         }		
@@ -58,7 +58,7 @@ pipeline {
 					script {
 						withDockerRegistry([credentialsId: "docker-jenkins", url: ""
                     ]) {
-							sh 'docker push prateek1o1/mytaskguru-backend:latest'
+							sh 'docker push sajalgupta545/mytaskguru-backend:latest'
                     }
                 }
             }
@@ -66,8 +66,8 @@ pipeline {
 
 			stage('Removing Docker Images from Local') {
 				steps {
-					sh "docker rmi prateek1o1/mytaskguru-frontend:latest"
-					sh "docker rmi prateek1o1/mytaskguru-backend:latest"
+					sh "docker rmi sajalgupta545/mytaskguru-frontend:latest"
+					sh "docker rmi sajalgupta545/mytaskguru-backend:latest"
             }
         }
 		stage('Ansible Deploy') {
