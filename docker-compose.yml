@@ -10,14 +10,14 @@ services:
     networks: 
       - springboot-mysql-net 
     environment:
-      - MYSQL_ROOT_PASSWORD=yourpassword
+      - MYSQL_ROOT_PASSWORD=sajal123
       - MYSQL_DATABASE=task
-      - MYSQL_USER=prateek
-      - MYSQL_PASSWORD=prateek@123
+      - MYSQL_USER=sajal
+      - MYSQL_PASSWORD=sajal123
     volumes:
       - mysql_data_volume:/var/lib/mysql
   react:
-    image: prateek1o1/mytaskguru-frontend:latest
+    image: sajalgupta545/mytaskguru-frontend:latest
     container_name: client
     ports:
       - "3000:3000"
@@ -26,7 +26,7 @@ services:
     depends_on:
       - springboot-restful-webservices
   springboot-restful-webservices:
-    image: prateek1o1/mytaskguru-backend:latest
+    image: sajalgupta545/mytaskguru-backend:latest
     container_name: springboot-restful-webservices
     build: 
       context: ./
@@ -36,8 +36,8 @@ services:
     restart: always
     environment:
       spring_datasource_url: "jdbc:mysql://mysqldb:3306/task?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true"
-      spring_datasource_username: prateek
-      spring_datasource_password: prateek@123
+      spring_datasource_username: sajal
+      spring_datasource_password: sajal123
     depends_on:
       - mysqldb
     networks:
