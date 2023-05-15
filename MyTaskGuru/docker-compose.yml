@@ -1,4 +1,4 @@
-version: "3.8"
+version: "2.0"
 services:
 
   mysqldb:
@@ -48,6 +48,7 @@ services:
 
 networks:
   springboot-mysql-net:
+    driver: bridge
 
 volumes:
   mysql_data_volume:
