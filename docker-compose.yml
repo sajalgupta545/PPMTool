@@ -1,4 +1,4 @@
-version: "3.8"
+version: "1.18.0"
 services:
 
   mysqldb:
