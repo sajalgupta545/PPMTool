@@ -10,13 +10,13 @@ pipeline {
             }
         }
 
-		stage("Install a project with a clean slate") {
-			steps {
-				dir('mytaskguru') {
-					sh 'npm install'
-                }
-            }
-        }
+		// stage("Install a project with a clean slate") {
+		// 	steps {
+		// 		dir('mytaskguru') {
+		// 			sh 'npm install'
+  //               }
+  //           }
+  //       }
 
 		stage('Maven Build') {
 			steps {
