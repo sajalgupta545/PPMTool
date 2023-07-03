@@ -47,7 +47,7 @@ pipeline {
 					script {
 						withDockerRegistry([credentialsId: "docker-jenkins", url: ""
                     ]) {
-							sh 'docker push prateek1o1/mytaskguru-frontend:latest'
+							sh 'docker push sajalgupta545/mytaskguru-frontend:latest'
                     }
                 }
             }
